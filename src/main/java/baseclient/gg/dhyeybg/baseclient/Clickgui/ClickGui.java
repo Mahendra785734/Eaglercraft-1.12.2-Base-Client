@@ -7,6 +7,7 @@ import baseclient.gg.dhyeybg.baseclient.Clickgui.component.Component;
 import baseclient.gg.dhyeybg.baseclient.Clickgui.component.Frame;
 import baseclient.gg.dhyeybg.baseclient.module.Category;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.Gui;
 
 public class ClickGui extends GuiScreen {
 
