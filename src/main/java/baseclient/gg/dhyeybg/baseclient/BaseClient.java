@@ -11,8 +11,8 @@ public class BaseClient {
 
 	public static BaseClient instance;
 
-	public static final String NAME = "BaseClient";
-	public static final String VERSION = "v1.0.0";
+	public static final String NAME = "KYZXX CLIENT";
+	public static final String VERSION = "v1.1.0";
 
 	public static final int CLICKGUI_KEY = 54;
 
