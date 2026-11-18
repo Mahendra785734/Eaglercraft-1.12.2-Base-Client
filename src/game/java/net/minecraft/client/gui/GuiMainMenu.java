@@ -492,6 +492,8 @@ public class GuiMainMenu extends GuiScreen {
 			s = s + " Demo";
 		}
 
+		this.drawCenteredString(this.fontRendererObj, "KYZXX CLIENT", this.width / 2, 8, 0xFFBD62FF);
+		this.drawCenteredString(this.fontRendererObj, "1.12.2  |  RIGHT SHIFT OPENS CLIENT MENU", this.width / 2, 20, 0xFFE2E2E8);
 		this.drawString(this.fontRendererObj, s, 2, this.height - 20, -1);
 		this.drawString(this.fontRendererObj, "Eaglercraft 1.12.2 (" + EaglercraftVersion.projectOriginVersion + ")", 2,
 				this.height - 10, -1);
