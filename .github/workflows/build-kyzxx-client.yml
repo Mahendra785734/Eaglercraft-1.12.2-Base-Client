@@ -1,0 +1,54 @@
+name: Build KYZXX Eaglercraft Client
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - kyzxx-client
+    paths:
+      - 'src/**'
+      - 'build.gradle'
+      - 'gradle/**'
+      - 'CompileEPK.sh'
+      - 'MakeOfflineDownload.sh'
+      - '.github/workflows/build-kyzxx-client.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: Compile resource pack
+        run: |
+          java -version
+          chmod +x gradlew CompileEPK.sh MakeOfflineDownload.sh
+          ./CompileEPK.sh
+
+      - name: Compile browser client
+        run: ./gradlew generateJavaScript --no-daemon
+
+      - name: Create offline HTML clients
+        run: ./MakeOfflineDownload.sh
+
+      - name: Upload playable HTML files
+        uses: actions/upload-artifact@v4
+        with:
+          name: kyzxx-eaglercraft-1.12.2-html
+          path: |
+            javascript/Eaglercraft_1.12_Offline_en_US.html
+            javascript/Eaglercraft_1.12_Offline_International.html
+          if-no-files-found: error
+          compression-level: 0
