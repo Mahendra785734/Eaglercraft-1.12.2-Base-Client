@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import baseclient.gg.dhyeybg.baseclient.module.combat.*;
 import baseclient.gg.dhyeybg.baseclient.module.movement.*;
 import baseclient.gg.dhyeybg.baseclient.module.render.*;
+import baseclient.gg.dhyeybg.baseclient.module.misc.*;
 
 public class ModuleManager {
 
@@ -16,7 +17,9 @@ public class ModuleManager {
 		this.modules.add(new HUD());
 		this.modules.add(new FullBright());
 		this.modules.add(new Sprint());
-		this.modules.add(new Velocity());
+		this.modules.add(new FPS());
+		this.modules.add(new Coordinates());
+		this.modules.add(new Direction());
 	}
 
 	public Module getModule(String name) {
