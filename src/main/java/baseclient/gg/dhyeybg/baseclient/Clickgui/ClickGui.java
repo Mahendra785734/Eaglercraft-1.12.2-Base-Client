@@ -11,7 +11,7 @@ import net.minecraft.client.gui.GuiScreen;
 public class ClickGui extends GuiScreen {
 
 	public static ArrayList<Frame> frames;
-	public static int color = -1;
+	public static int color = 0xCC171923;
 
 	public ClickGui() {
 		frames = new ArrayList<Frame>();
@@ -19,6 +19,7 @@ public class ClickGui extends GuiScreen {
 		for (Category category : Category.values()) {
 			Frame frame = new Frame(category);
 			frame.setX(frameX);
+			frame.setY(30);
 			frames.add(frame);
 			frameX += frame.getWidth() + 1;
 		}
@@ -31,6 +32,10 @@ public class ClickGui extends GuiScreen {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		this.drawDefaultBackground();
+		Gui.drawRect(0, 0, this.width, 24, 0xEE11131B);
+		this.fontRendererObj.drawStringWithShadow("KYZXX", 9, 7, 0xFFBD62FF);
+		this.fontRendererObj.drawStringWithShadow("CLIENT / MODULES", 55, 8, 0xFFFFFFFF);
+		this.fontRendererObj.drawStringWithShadow("RIGHT SHIFT: CLOSE  |  LEFT CLICK: TOGGLE / DRAG  |  RIGHT CLICK: COLLAPSE", 9, this.height - 12, 0xFFB7B9C5);
 		for (Frame frame : frames) {
 			frame.renderFrame(this.fontRendererObj);
 			frame.updatePosition(mouseX, mouseY);
@@ -68,7 +73,7 @@ public class ClickGui extends GuiScreen {
 				}
 			}
 		}
-		if (keyCode == 1) {
+		if (keyCode == 1 || keyCode == 54) {
 			this.mc.displayGuiScreen(null);
 		}
 	}
@@ -89,6 +94,6 @@ public class ClickGui extends GuiScreen {
 
 	@Override
 	public boolean doesGuiPauseGame() {
-		return true;
+		return false;
 	}
 }
